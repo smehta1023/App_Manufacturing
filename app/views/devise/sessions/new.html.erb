@@ -1,0 +1,32 @@
+<div id='sign-up-form'>
+  <div class="row">
+    <h3 class="col-sm-7 col-sm-push-3" style="margin-bottom: 30px; margin-top: -10px; padding-left: 0px;"><b>Happy <%= Date.today.strftime("%A") %>!</b></h3>
+  </div>
+  <div class='row'>
+    <div id='sign-in-text'>Just enter your email address and password we’ll get you right into Manufacturing China.</div>
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, :class => 'form-control input-lg' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off", :class => 'form-control input-lg' %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+    <div class="form-group">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in", :class => 'btn btn-success btn-block btn-lg' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,26 @@
+#sign-up-form {
+  margin-left: 40px;
+}
+
+#sign-in-text {
+  font-size: 17px;
+  line-height: 25px;
+  margin: 20px;
+  margin-top: -5px;
+
+}
+
+
+.modal-footer{
+  padding-left: 65px;
+  
+}
+
+.submit{
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+#wizard-container {
+  margin-left: -15px;
+}
