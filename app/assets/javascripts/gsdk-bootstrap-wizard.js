@@ -24,15 +24,31 @@ $(document).ready(function(){
     $('[rel="tooltip"]').tooltip();
 
     // Code for the Validator
+    
+    $('form').validate({
+        // make sure error message isn't displayed
+        errorPlacement: function () { },
+        // set the errorClass as a random string to prevent label disappearing when valid
+        errorClass : "bob",
+        // use highlight and unhighlight
+        highlight: function (element, errorClass, validClass) {
+            $(element.form).find("label[for=" + element.id + "]")
+            .addClass("error");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element.form).find("label[for=" + element.id + "]")
+            .removeClass("error");
+        }
+    });
+
     var $validator = $('.wizard-card form').validate({
 		  rules: {
-		    firstname: {
+		    name: {
 		      required: true,
 		      minlength: 3
 		    },
-		    lastname: {
-		      required: true,
-		      minlength: 3
+		    importantance: {
+		      required: true
 		    },
 		    email: {
 		      required: true,
@@ -40,6 +56,8 @@ $(document).ready(function(){
 		    }
         }
 	});
+
+
 
     // Wizard Initialization
   	$('.wizard-card').bootstrapWizard({
