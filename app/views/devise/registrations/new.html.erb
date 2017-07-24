@@ -3,11 +3,12 @@
     <h3 class="col-sm-7 col-sm-push-3" style="margin-bottom: 30px; margin-top: -10px; padding-left: 0px;"><b>Happy <%= Date.today.strftime("%A") %>!</b></h3>
   </div>
   <div class="row" style="padding-left: 0px; margin-top: -5px; margin-bottom: -7px;">
-    <%= link_to image_tag("linkedin-login-button.png", width: 432, height: 50), user_linkedin_omniauth_authorize_path, class: "col-sm-push-0 col-sm-6"  %>
+    <%= link_to image_tag("linkedin-login-button.png", width: 432, height: 65), user_linkedin_omniauth_authorize_path, class: "col-sm-push-0 col-sm-6"  %>
   </div>
   <br>
   <div class="row" style="padding-left: 14px;">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= hidden_field_tag :user_type, params[:type] %>
       <%= devise_error_messages! %>
 
       <div class="form-group">

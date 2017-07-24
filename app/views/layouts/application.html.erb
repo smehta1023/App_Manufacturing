@@ -40,36 +40,34 @@
 
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Manufacturing China</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <% if user_signed_in? %>
-              <li>
-                <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-              </li>
-            <% else %>
-              <li>
-                <%= link_to('Login', new_user_session_path)  %>  
-              </li>
-            <% end %>
-            <li><%= link_to "Sign Up", "/users/sign_up"  %></li>
-            <li>
-              <%= link_to "Create Project", "#", "data-toggle" => "modal", "data-target" => "#exampleModalLong" %>
-            </li>
-            <li>
-              <li><%= link_to "Claim Listing", "/home/claim_listing"  %></li>
-            </li>
-            <li>
-              <li><%= link_to "About", "/home/about"  %></li>
-            </li>
-
-            
-          </ul>
+        <div class="row">
+          <div class="col-sm-3">
+            <a class="navbar-brand" href="/">Manufacturing China</a>
+          </div>
+          <div class="col-sm-9 col-sm-push-4">
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+              <ul class="nav navbar-nav">
+                <% if user_signed_in? %>
+                  <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+                <% else %>
+                  <li><%= link_to('Login', new_user_session_path) %></li>
+                <% end %>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    Register
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/user/sign_up?type=buyer">Buyer</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/users/sign_up?type=supplier">Supplier</a></li>
+                  </ul>
+                </li>
+                <li><%= link_to "Create Project", "#", "data-toggle" => "modal", "data-target" => "#exampleModalLong" %></li>
+                <li><%= link_to "Claim Listing", "/home/claim_listing"  %></li>
+                <li><%= link_to "About", "/home/about"  %></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
