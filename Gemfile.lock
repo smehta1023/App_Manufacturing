@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    actioncable (0.0.0)
     actionmailer (4.2.8)
       actionpack (= 4.2.8)
       actionview (= 4.2.8)
@@ -187,6 +188,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actioncable
   byebug
   coffee-rails (~> 4.1.0)
   devise
@@ -205,4 +207,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.1
+   1.15.3

@@ -64,6 +64,7 @@ $(document).ready(function(){
         'tabClass': 'nav nav-pills',
         'nextSelector': '.btn-next',
         'previousSelector': '.btn-previous',
+        'lastSelector' : '.btn-finish',
 
         onNext: function(tab, navigation, index) {
         	var $valid = $('.wizard-card form').valid();
@@ -71,6 +72,15 @@ $(document).ready(function(){
         		$validator.focusInvalid();
         		return false;
         	}
+        },
+
+        onFinish: function(tab, navigation, index) {
+            alert(123)
+            var $valid = $('.wizard-card form').valid();
+            if(!$valid) {
+                $validator.focusInvalid();
+                return false;
+            }
         },
 
         onInit : function(tab, navigation, index){
