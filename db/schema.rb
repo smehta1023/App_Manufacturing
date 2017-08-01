@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731225528) do
+ActiveRecord::Schema.define(version: 20170801173509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,33 @@ ActiveRecord::Schema.define(version: 20170731225528) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
+  create_table "leads", force: :cascade do |t|
+    t.integer  "buyers_id"
+    t.integer  "suppliers_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "listings", force: :cascade do |t|
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "company_name",                         null: false
+    t.string   "email",                     limit: 35, null: false
+    t.string   "account_type"
+    t.string   "account_status"
+    t.string   "address"
+    t.integer  "business_phone"
+    t.string   "preferred_shipping_method"
+    t.string   "core_business"
+    t.integer  "verified_score"
+    t.string   "tags"
+    t.boolean  "claimed?"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -58,6 +85,7 @@ ActiveRecord::Schema.define(version: 20170731225528) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.string   "user_type"
+    t.boolean  "buyer?"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,4 +1,4 @@
-class CreateLead < ActiveRecord::Migration
+class CreateLeads < ActiveRecord::Migration
   def change
     create_table :leads do |t|
       t.references :buyers
