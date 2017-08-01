@@ -65,9 +65,9 @@ end
 
 private
 
-def buyer_params
-  params.require(:buyers).permit(:first_name, :last_name, :business_phone, :address, :id, :user_id)
-end
+  def buyer_params
+    params.require(:buyers).permit(:first_name, :last_name, :business_phone, :address, :id, :user_id)
+  end
 
 
 
