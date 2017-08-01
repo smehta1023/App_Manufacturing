@@ -11,20 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724140915) do
+ActiveRecord::Schema.define(version: 20170731225528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "clients", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "linkedin_link"
-    t.string   "work_email"
-    t.string   "phone"
-    t.string   "primary_contact"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "buyers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name",                null: false
+    t.string   "last_name",                 null: false
+    t.string   "company_name",              null: false
+    t.string   "linkedin"
+    t.string   "email",          limit: 35, null: false
+    t.string   "account_type"
+    t.string   "account_status"
+    t.string   "address"
+    t.integer  "mobile_phone"
+    t.integer  "personal_phone"
+    t.integer  "business_phone"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "identities", force: :cascade do |t|
@@ -36,39 +42,6 @@ ActiveRecord::Schema.define(version: 20170724140915) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
-
-  create_table "projects", force: :cascade do |t|
-    t.string   "project_name"
-    t.string   "manufactured_priority"
-    t.boolean  "source"
-    t.string   "company_name"
-    t.string   "occupation"
-    t.boolean  "cad"
-    t.string   "urgency"
-    t.boolean  "is_packed"
-    t.boolean  "have_sample"
-    t.boolean  "sensitive"
-    t.string   "nad"
-    t.string   "status"
-    t.boolean  "have_assistance"
-    t.integer  "price"
-    t.string   "quantity"
-    t.integer  "client_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.boolean  "require_molds"
-  end
-
-  add_index "projects", ["client_id"], name: "index_projects_on_client_id", using: :btree
-
-  create_table "services", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "project_id"
-  end
-
-  add_index "services", ["project_id"], name: "index_services_on_project_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -91,6 +64,4 @@ ActiveRecord::Schema.define(version: 20170724140915) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "identities", "users"
-  add_foreign_key "projects", "clients"
-  add_foreign_key "services", "projects"
 end
