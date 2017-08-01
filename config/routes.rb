@@ -15,6 +15,17 @@ Rails.application.routes.draw do
 
 
 
+   # resources :users, except: [:index] do
+   #  resources :shift
+   #  resources :expense
+   # end
+   # post '/users/new' => 'users#create'
+   get '/login' => 'sessions#new'
+   post '/login' => 'sessions#create'
+   delete '/logout' => 'sessions#destroy'
+
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
